@@ -35,7 +35,7 @@ class YtdlRunner {
     fun run(args: String): String? {
         var ytdlPathStr = ytdlPath.toString()
         if (!ytdlPathStr.startsWith("/")) {
-            ytdlPathStr = "./" + ytdlPathStr
+            ytdlPathStr = "./$ytdlPathStr"
         }
 
         return "$ytdlPathStr $args".runCommand(File("./"))
