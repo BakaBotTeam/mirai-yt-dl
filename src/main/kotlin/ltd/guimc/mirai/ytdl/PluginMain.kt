@@ -1,6 +1,8 @@
 package ltd.guimc.mirai.ytdl
 
+import ltd.guimc.mirai.ytdl.command.ytdlCommand
 import ltd.guimc.mirai.ytdl.utils.YtdlRunner
+import net.mamoe.mirai.console.command.CommandManager
 import net.mamoe.mirai.console.permission.AbstractPermitteeId
 import net.mamoe.mirai.console.permission.PermissionService
 import net.mamoe.mirai.console.permission.PermissionService.Companion.hasPermission
@@ -32,6 +34,7 @@ object PluginMain : KotlinPlugin(
     override fun onEnable() {
         logger.info { "Plugin loading" }
         ytdlRunner = YtdlRunner()
+        CommandManager.registerCommand(ytdlCommand)
         logger.info { "Plugin loaded" }
     }
 
