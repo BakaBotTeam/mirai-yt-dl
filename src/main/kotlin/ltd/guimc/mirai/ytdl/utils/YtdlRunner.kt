@@ -26,11 +26,8 @@ class YtdlRunner {
                 }
             }
             var ytdlPathStr = ytdlPath.toString()
-            if (!ytdlPathStr.startsWith("/")) {
-                ytdlPathStr = "./$ytdlPathStr"
-            }
 
-            "chmod +x $ytdlPathStr".runCommand(File("./"))
+            if (!SystemUtils.isWindows()) "chmod +x $ytdlPathStr".runCommand(File("./"))
             PluginMain.logger.info("下载yt-dlp成功")
         } else {
             PluginMain.logger.info("正在检查更新")
@@ -40,9 +37,6 @@ class YtdlRunner {
 
     fun run(args: String): String? {
         var ytdlPathStr = ytdlPath.toString()
-        if (!ytdlPathStr.startsWith("/")) {
-            ytdlPathStr = "./$ytdlPathStr"
-        }
 
         return "$ytdlPathStr $args".runCommand(File("./"))
     }
